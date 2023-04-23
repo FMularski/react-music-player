@@ -2,6 +2,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background: rgb(36, 36, 36);
+}
+
+p, h1, h2, h3 {
+    color: white;
 }
 
 @import './song';

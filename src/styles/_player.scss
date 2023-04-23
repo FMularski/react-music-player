@@ -13,7 +13,11 @@
 
     input {
         width: 100%;
-        padding: 1rem 2rem;
+        padding: 1rem 0rem;
+
+        &:hover {
+            cursor: pointer;
+        }
     }
 
     p {
@@ -27,8 +31,16 @@
     align-items: center;
     padding: 1rem;
     width: 30%;
-
+    background: rgba($color: #FFFFFF, $alpha: 0.1);
+    border-radius: 1rem;
+    
     svg {
+        background: none;
         cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+            transform: scale(1.2);
+        }
     }
 }
