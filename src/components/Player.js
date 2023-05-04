@@ -8,8 +8,8 @@ const Player = ({songs, currentSong, setCurrentSong}) => {
 
     const [isPlaying, setIsPlaying] = useState(false);
     const [songInfo, setSongInfo] = useState({
-        currentTime: null,
-        duration: null
+        currentTime: 0,
+        duration: 0
     });
 
     const changeSongHandler = (forward) => {
