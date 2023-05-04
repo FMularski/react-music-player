@@ -1,6 +1,15 @@
-const LibrarySong = ({song, setCurrentSong}) => {
+const LibrarySong = ({isPlaying, audioRef, song, setCurrentSong}) => {
     function pickSong() {
         setCurrentSong(song);
+        if (isPlaying) {
+            const playPromise = audioRef.current.play();
+            if(playPromise !== undefined) {
+                playPromise.then(audio => {
+                    audioRef.current.play();
+                });
+            }
+        }
+        
     }
 
     return (
