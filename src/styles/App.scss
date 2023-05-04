@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     background: rgb(36, 36, 36);
+    font-family: 'Lato', sans-serif;
 }
 
 p, h1, h2, h3 {
@@ -11,3 +12,4 @@ p, h1, h2, h3 {
 
 @import './song';
 @import './player';
+@import './library';
