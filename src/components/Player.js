@@ -1,21 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay, faAngleLeft, faAngleRight, faPause } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
-import { playAudio } from "../util";
 
-const Player = ({isPlaying, setIsPlaying, audioRef, songInfo, songs, setSongs, currentSong, setCurrentSong}) => {
-    const changeSongHandler = (forward) => {
-        const currentSongIndex = songs.findIndex(s => s.id === currentSong.id);
-        console.log(currentSongIndex);
-
-        let nextSongIndex = forward ? currentSongIndex + 1 : currentSongIndex - 1;
-        if (nextSongIndex < 0) nextSongIndex = songs.length - 1;
-        if (nextSongIndex === songs.length) nextSongIndex = 0;
-
-        setCurrentSong(songs[nextSongIndex]);
-        playAudio(isPlaying, audioRef);
-    }
-
+const Player = ({changeSongHandler, isPlaying, setIsPlaying, audioRef, songInfo, songs, setSongs, currentSong, setCurrentSong}) => {
     useEffect(() => {
         const newSongs = songs.map(s => {
             if (s.id === currentSong.id) return {...s, active: true};

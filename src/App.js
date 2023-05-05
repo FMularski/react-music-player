@@ -26,14 +26,25 @@ function App() {
             duration: duration
         })
     }
+
+  const changeSongHandler = forward => {
+        const currentSongIndex = songs.findIndex(s => s.id === currentSong.id);
+
+        let nextSongIndex = forward ? currentSongIndex + 1 : currentSongIndex - 1;
+        if (nextSongIndex < 0) nextSongIndex = songs.length - 1;
+        if (nextSongIndex === songs.length) nextSongIndex = 0;
+
+        setCurrentSong(songs[nextSongIndex]);
+        if (isPlaying) setTimeout(() => audioRef.current.play(), 100);
+    }
   
   return (
     <div>
       <Nav libraryStatus={libraryStatus} setLibraryStatus={setLibraryStatus} />
       <Song currentSong={currentSong} />
-      <Player isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioRef={audioRef} songInfo={songInfo} songs={songs} setSongs={setSongs} currentSong={currentSong} setCurrentSong={setCurrentSong} />
+      <Player changeSongHandler={changeSongHandler} isPlaying={isPlaying} setIsPlaying={setIsPlaying} audioRef={audioRef} songInfo={songInfo} songs={songs} setSongs={setSongs} currentSong={currentSong} setCurrentSong={setCurrentSong} />
       <Library libraryStatus={libraryStatus} setSongs={setSongs} isPlaying={isPlaying} audioRef={audioRef} songs={songs} setCurrentSong={setCurrentSong} />
-      <audio onLoadedMetadata={timeUpdateHandler} onTimeUpdate={timeUpdateHandler} ref={audioRef} src={currentSong.audio}></audio>
+      <audio onLoadedMetadata={timeUpdateHandler} onTimeUpdate={timeUpdateHandler} ref={audioRef} src={currentSong.audio} onEnded={() => changeSongHandler(true)}></audio>
     </div>
     
   );
