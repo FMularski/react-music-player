@@ -1,0 +1,27 @@
+nav {
+    min-height: 10vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    button {
+        color: transparent;
+        background: white;
+        border-radius: 1rem;
+        padding: 1rem;
+        cursor: pointer;
+        transition: all .3s ease;
+
+        * {
+            color: black;
+            background: transparent;
+            margin-right: .1rem;
+        }
+
+        &:hover {
+            transform: scale(1.1);
+        }
+
+    
+    }
+}
